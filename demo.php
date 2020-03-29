@@ -41,3 +41,6 @@ $address_2 = new Address(array(
   'country_name' => 'Pakistan',
 ));
 echo $address_2->display();
+
+echo '<h2>Address __toString</h2>';
+echo $address_2;
