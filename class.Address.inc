@@ -5,7 +5,20 @@
  */
 class Address
 {
-  // Property Names
+
+  // Constants
+  const ADDRESS_TYPE_RESIDENCE = 1;
+  const ADDRESS_TYPE_BUSINESS = 2;
+  const ADDRESS_TYPE_PARK = 3;
+
+  //Address types.
+  static public $valid_address_types = array(
+    Address::ADDRESS_TYPE_RESIDENCE => 'Residence',
+    Address::ADDRESS_TYPE_BUSINESS => 'Business',
+    Address::ADDRESS_TYPE_PARK => 'Park',
+  );
+
+  // Properties Started ////////////////////////////////////////////////
 
   // Street address.
   public $street_address_1;
@@ -26,9 +39,14 @@ class Address
   // Primary key of an Address.
   protected $_address_id;
 
+  // Address type id
+  protected $_address_type_id;
+
   // When the record was created and updated.
   protected $_time_created;
   protected $_time_updated;
+
+  // Properties Ended ///////////////////////////////////////////////////
 
   // Constructor.
   // @param array $data Optional array of property names and values.
@@ -82,6 +100,12 @@ class Address
   // @param string $name
   // @param mixed $value
   function __set($name, $value) {
+    // Check the property name address type id. Only set valid address type id.
+    if('address_type_id' == $name) {
+      $this->_setAddressTypeId($value);
+      return;
+    }
+
     // Allow anything to set the postal code.
     if ('postal_code' == $name) {
       $this->$name = $value;
@@ -128,5 +152,23 @@ class Address
     $output .= $this->country_name;
 
     return $output;
+  }
+
+  // Determine if an address type is valid.
+  // @param int $address_type_id
+  // return Boolean
+  static public function isValidAddressTypeId($address_type_id) {
+     return array_key_exists($address_type_id, self::$valid_address_types);
+  }
+
+  // New protected method for address type id
+  // If valid, set the address_type_id
+  // @param int $address_type_id
+  // Self keyword refers to the class of an object.
+  protected function _setAddressTypeId($address_type_id) {
+    if (self::isValidAddressTypeId($address_type_id)) {
+      // setting protected value
+      $this->_address_type_id = $address_type_id;
+    }
   }
 }
