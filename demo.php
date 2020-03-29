@@ -17,6 +17,7 @@ $address->city_name = 'RYK';
 $address->subdivision_name = 'State';
 $address->postal_code = '64200';
 $address->country_name = 'Pakistan';
+$address->address_type_id = 1;
 
 echo '<tt><pre>' . var_export($address, TRUE) . '</pre></tt>';
 
@@ -44,3 +45,14 @@ echo $address_2->display();
 
 echo '<h2>Address __toString</h2>';
 echo $address_2;
+
+// Displaying address types
+echo '<h2>Displaying Address types</h2>';
+echo '<tt><pre>' . var_export(Address::$valid_address_types, TRUE) . '</pre></tt>';
+
+echo '<h2>Testing address type ID validation</h2>';
+for ($id = 0; $id <=4; $id++) {
+  echo "<div>$id: ";
+  echo Address::isValidAddressTypeId($id) ? 'Valid' : 'Invalid';
+  echo '</div>';
+}
