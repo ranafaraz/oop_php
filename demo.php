@@ -27,3 +27,7 @@ echo $address->display();
 // Testing protected property access.
 echo '<h2>Testing Protected Access.</h2>';
 echo "Address ID: {$address->_address_id}";
+
+echo '<h2>Testing magic __get and __set</h2>';
+unset($address->postal_code);
+echo $address->display();
