@@ -92,6 +92,11 @@ class Address
     trigger_error('Undefined or Unallowed property via __set(): ' . $name);
   }
 
+  // Magic toString method. Returns String
+  function __toString() {
+    return $this->display();
+  }
+
   // Placeholder function to lookup the postal code in the database table.
   // Guess the Postal Code against Subdivision and city name.
   // Todo replace with a database LOOKUP
