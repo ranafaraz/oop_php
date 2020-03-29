@@ -30,6 +30,31 @@ class Address
   protected $_time_created;
   protected $_time_updated;
 
+  // Constructor.
+  // @param array $data Optional array of property names and values.
+  function __construct($data = array()) {
+    $this->_time_created = time();
+
+    // Ensure that the address can be populated.
+    if(!is_array($data)) {
+      trigger_error('Unable to contruct address with a ' . get_class($name));
+    }
+
+    // If there is at least one value in array, populate the Address with it.
+    if(count($data) > 0) {
+      foreach ($data as $name => $value) {
+      // Special Case for protected properties.
+        if(in_array($name, array(
+          'time_created',
+          'time_updated',
+        ))) {
+          $name = '_' . $name;
+        }
+        $this->$name = $value;
+      }
+    }
+  }
+
   // Magic __get.
   // @para string $name
   // @return mixed.
@@ -59,7 +84,7 @@ class Address
   function __set($name, $value) {
     // Allow anything to set the postal code.
     if ('postal_code' == $name) {
-      $this->name = $value;
+      $this->$name = $value;
       return;
     }
 
