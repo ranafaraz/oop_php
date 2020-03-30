@@ -3,8 +3,7 @@
 /**
  * Class having properties of Address
  */
-abstract class Address
-{
+abstract class Address implements Model {
 
   // Constants
   const ADDRESS_TYPE_RESIDENCE = 1;
@@ -187,4 +186,15 @@ abstract class Address
       $this->_address_type_id = $address_type_id;
     }
   }
+  
+  /**
+   * Load an Address.
+   * @param id $address_id
+   */
+  final public static function load($address_id) {}
+  
+  /**
+   * Save an address.
+   */
+  final public function save() {}
 }

@@ -35,3 +35,16 @@ $address_business = new AddressBusiness(array(
 ));
 echo $address_business;
 echo '<tt><pre>' . var_export($address_business, TRUE) . '</pre></tt>';
+
+echo '<h2>Instantiating Address Park</h2>';
+$address_park = new AddressPark(array(
+    'street_address_1' => '789 Missing Circle',
+    'street_address_2' => 'Suite 0',
+    'city_name' => 'Hamlet',
+    'subdivision_name' => 'Territory',
+    'country_name' => 'Australia',
+    
+));
+
+echo $address_park;
+echo '<tt><pre>' . var_export($address_park, TRUE) . '</pre></tt>';
