@@ -64,6 +64,16 @@ echo '$address_business_copy_is: ' . ($address_business === $address_business_co
 echo '<br/>$address_business is class ' . get_class($address_business) . '.';
 echo '<br/>$address_business_copy is ' . ($address_business_copy instanceof AddressBusiness ? '' : 'not ') . ' an AddressBusiness.';
 
+echo '<h2>Testing typecasting to an object.</h2>';
+$test_object = (object) array(
+    'Hello' => 'World',
+    'nested' => array('key' => 'value'),
+);
+echo '<tt><pre>' . var_export($test_object, TRUE) . '</pre></tt>'; // Debugging the test object.
+
+$test_object2 = (object) 12345;
+echo '<tt><pre>' . var_export($test_object2, TRUE) . '</pre></tt>'; // Debugging the test object.
+
 
 
 
