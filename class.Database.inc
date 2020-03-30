@@ -33,11 +33,10 @@ class Database {
   // Clone Magic Method specifies how an object is duplicated.
 
   // Empty clone magic method to prevent duplication.
-  private function __clone() {
+  private function __clone() {}
 
     // Get the mysqli connection.
     public function getConnection() {
       return $this->_connection;
     }
   }
-}
