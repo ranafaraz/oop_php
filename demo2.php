@@ -70,8 +70,11 @@ $test_object = (object) array(
     'nested' => array('key' => 'value'),
 );
 echo '<tt><pre>' . var_export($test_object, TRUE) . '</pre></tt>'; // Debugging the test object.
-
-echo '<h2>Loading from Database</h2>';
-$address_db = Address::load(0);
-echo '<tt><pre>' . var_export($address_db, TRUE) . '</pre></tt>'; 
-
+try {
+    echo '<h2>Loading from Database</h2>';
+    $address_db = Address::load(0);
+    echo '<tt><pre>' . var_export($address_db, TRUE) . '</pre></tt>'; 
+}
+ catch (ExceptionAddress $e) {
+    echo $e;
+ }
