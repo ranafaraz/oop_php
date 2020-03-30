@@ -12,7 +12,7 @@ function __autoload($class_name){
 }
 
 echo '<h2>Instantiating AddressResidence';
-$address_residence = new AddressResidence();
+$address_residence = Address::getInstance(Address::ADDRESS_TYPE_RESIDENCE); 
 
 
 // Assigning values to the properties of address class.
