@@ -213,6 +213,7 @@ abstract class Address implements Model {
       if ($row = $result->fetch_assoc()) {
           return self::getInstance($row['address_type_id'], $row);
       }
+      throw new Exception('Address not found.');
   }
   
   /**
