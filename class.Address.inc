@@ -3,7 +3,7 @@
 /**
  * Class having properties of Address
  */
-class Address
+abstract class Address
 {
 
   // Constants
@@ -51,7 +51,8 @@ class Address
   // Constructor.
   // @param array $data Optional array of property names and values.
   function __construct($data = array()) {
-    $this->_time_created = time();
+      $this->_init();
+      $this->_time_created = time();
 
     // Ensure that the address can be populated.
     if(!is_array($data)) {
@@ -100,13 +101,7 @@ class Address
   // @param string $name
   // @param mixed $value
   function __set($name, $value) {
-    // Check the property name address type id. Only set valid address type id.
-    if('address_type_id' == $name) {
-      $this->_setAddressTypeId($value);
-      return;
-    }
-
-    // Allow anything to set the postal code.
+   // Allow anything to set the postal code.
     if ('postal_code' == $name) {
       $this->$name = $value;
       return;
@@ -120,6 +115,11 @@ class Address
   function __toString() {
     return $this->display();
   }
+  /**
+   * Force extending classes to implement init method.
+   */
+  abstract protected function _init();
+
 
   // Placeholder function to lookup the postal code in the database table.
   // Guess the Postal Code against Subdivision and city name.
