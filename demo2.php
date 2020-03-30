@@ -71,10 +71,7 @@ $test_object = (object) array(
 );
 echo '<tt><pre>' . var_export($test_object, TRUE) . '</pre></tt>'; // Debugging the test object.
 
-$test_object2 = (object) 12345;
-echo '<tt><pre>' . var_export($test_object2, TRUE) . '</pre></tt>'; // Debugging the test object.
-
-
-
-
+echo '<h2>Loading from Database</h2>';
+$address_db = Address::load(1);
+echo '<tt><pre>' . var_export($address_db, TRUE) . '</pre></tt>'; 
 
