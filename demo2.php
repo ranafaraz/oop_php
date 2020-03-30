@@ -48,3 +48,23 @@ $address_park = new AddressPark(array(
 
 echo $address_park;
 echo '<tt><pre>' . var_export($address_park, TRUE) . '</pre></tt>';
+
+echo '<h2>Cloning AddressPark</h2>';
+$address_park_clone = clone $address_park;
+echo '<tt><pre>' . var_export($address_park_clone, TRUE) . '</pre></tt>';
+echo '$address_park_clone_is: ' . ($address_park == $address_park_clone ? '' : 'not ') . 'a copy of address_park.';
+
+echo '<h2>Copying AddressBusiness Referece</h2>';
+$address_business_copy = $address_business;
+echo '$address_business_copy_is: ' . ($address_business === $address_business_copy ? '' : 'not ') . 'a copy of $address_business.';
+
+echo '<h2>Setting address_business_copy as a new Address Park.</h2>';
+$address_business = new AddressPark();
+echo '$address_business_copy_is: ' . ($address_business === $address_business_copy ? '' : 'not ') . 'a copy of $address_business.';
+echo '<br/>$address_business is class ' . get_class($address_business) . '.';
+echo '<br/>$address_business_copy is ' . ($address_business_copy instanceof AddressBusiness ? '' : 'not ') . ' an AddressBusiness.';
+
+
+
+
+

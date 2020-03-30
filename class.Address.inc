@@ -46,7 +46,15 @@ abstract class Address implements Model {
   protected $_time_updated;
 
   // Properties Ended ///////////////////////////////////////////////////
-
+  
+  /**
+   * Post Clone Behavior.
+   */
+  function __clone() {
+      $this->_time_created = time();
+      $this->_time_updated = NULL;
+  }
+  
   // Constructor.
   // @param array $data Optional array of property names and values.
   function __construct($data = array()) {
